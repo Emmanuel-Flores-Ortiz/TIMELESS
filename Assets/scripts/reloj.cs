@@ -45,7 +45,8 @@ public class reloj : MonoBehaviour
         {
             spawnboss = true;
             jefe.SetActive(true);
-            textojefe.SetActive(true);
+            juego = false;
+           
         }
     }
 }
