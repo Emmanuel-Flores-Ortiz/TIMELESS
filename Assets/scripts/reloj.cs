@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class reloj : MonoBehaviour
 {
@@ -6,8 +7,12 @@ public class reloj : MonoBehaviour
     public Transform pivotminutos;
     private const float tiempo = 120f;
     private float hora = 0f;
+    public TextMeshProUGUI texto;
 
-    // Update is called once per frame
+    void Start()
+    {
+        hora = 86400f;
+    }
     void Update()
     {
         hora += Time.deltaTime * tiempo;
@@ -20,5 +25,13 @@ public class reloj : MonoBehaviour
 
         pivothoras.localRotation = Quaternion.Euler(0, manecillaH, 0);
         pivotminutos.localRotation = Quaternion.Euler(0, manecillaM, 0);
+
+        int horaTexto = Mathf.FloorToInt(horas % 24f);
+        int minutoTexto = Mathf.FloorToInt(relojMinutos);
+
+        if(texto != null )
+        {
+            texto.text = string.Format("{0:00}:{1:00}", horaTexto, minutoTexto);
+        }
     }
 }
