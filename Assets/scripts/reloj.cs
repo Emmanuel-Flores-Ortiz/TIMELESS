@@ -8,14 +8,21 @@ public class reloj : MonoBehaviour
     private const float tiempo = 120f;
     private float hora = 0f;
     public TextMeshProUGUI texto;
-
+    public GameObject jefe;
+    public GameObject textojefe;
+    private bool spawnboss = false;
+    private bool juego = true;
     void Start()
     {
-        hora = 86400f;
+        hora = 86000f;
     }
     void Update()
     {
-        hora += Time.deltaTime * tiempo;
+        if (juego)
+        {
+            hora += Time.deltaTime * tiempo;
+        }
+       
         float minutos = hora / 60f;
         float horas = minutos / 60f;
         float relojHora = horas % 12f;
@@ -32,6 +39,13 @@ public class reloj : MonoBehaviour
         if(texto != null )
         {
             texto.text = string.Format("{0:00}:{1:00}", horaTexto, minutoTexto);
+        }
+
+        if(horas>=24f && !spawnboss)
+        {
+            spawnboss = true;
+            jefe.SetActive(true);
+            textojefe.SetActive(true);
         }
     }
 }
