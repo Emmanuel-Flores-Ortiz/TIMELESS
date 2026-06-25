@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CONTROL : MonoBehaviour
+public class ControladorJugador : MonoBehaviour
 {
     Rigidbody rb;
     //Animator animator;
