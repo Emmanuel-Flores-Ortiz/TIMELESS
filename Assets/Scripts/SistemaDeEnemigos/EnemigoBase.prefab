@@ -8,21 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< Updated upstream
   - component: {fileID: 2174816714622713181}
   - component: {fileID: 4309455234648641049}
   - component: {fileID: 9144726664566932262}
   - component: {fileID: -5481599568111855900}
   - component: {fileID: 7980979959301228182}
   - component: {fileID: 4034375227829940152}
-=======
-  - component: {fileID: 3151739373669014327}
-  - component: {fileID: 7727560258851753856}
-  - component: {fileID: 892254200193488564}
-  - component: {fileID: -758042190271153878}
-  - component: {fileID: 3622463649065147092}
-  - component: {fileID: 9158942644135448158}
->>>>>>> Stashed changes
   m_Layer: 0
   m_Name: EnemigoBase
   m_TagString: enemy
