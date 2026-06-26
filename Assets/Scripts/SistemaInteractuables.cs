@@ -10,7 +10,7 @@ public class SistemaInteractuables : MonoBehaviour
 
     //VARIABLES TIPO ESTRUCTURA
     public Collider coll;
-    [SerializeField] private TipoObjeto tipoObjeto;
+    [SerializeField] public TipoObjeto tipoObjeto;
     public ControladorJugador controlJugador;
     public Reloj scriptReloj;
     private bool enEnfriamiento = false;
@@ -51,7 +51,7 @@ public class SistemaInteractuables : MonoBehaviour
         coll.enabled = false;
         controlJugador.speed = 10f;
         Destroy(gameObject);
-        Debug.Log("zanahoria recolectada");
+        Debug.Log("pata recolectada");
     }
 
     void eventotiempo()
@@ -82,7 +82,7 @@ public class SistemaInteractuables : MonoBehaviour
         Debug.Log("Enfriamiento terminado. Listo para usarse de nuevo.");
         }
 
-}
+    }
 
 
     //ONTRIGGER
@@ -98,6 +98,10 @@ public class SistemaInteractuables : MonoBehaviour
 
                 case TipoObjeto.zanahoria:
                     eventoZanahoria();
+                    break;
+
+                case TipoObjeto.pata:
+                    eventopata();
                     break;
 
                 case TipoObjeto.minutero:

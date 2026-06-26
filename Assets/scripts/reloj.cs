@@ -59,7 +59,7 @@ public class Reloj : MonoBehaviour
                 if (minutero != null)
                 {
                     Vector3 escalaModificada = escalaOriginal;
-                    escalaModificada.x += 0.16f; 
+                    escalaModificada.x += 0.18f; 
                     minutero.transform.localScale = escalaModificada;
                 }
             }

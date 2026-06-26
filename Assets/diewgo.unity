@@ -584,6 +584,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &458799940
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 458799942}
+  - component: {fileID: 458799941}
+  m_Layer: 0
+  m_Name: cosas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &458799941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458799940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a22c43efd8e505f48bb3ba0183befe89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnBuffs
+  prefabBuff: {fileID: 631908891210964609, guid: 08d86e019321d1142b5a839059331bd1, type: 3}
+  radio: 8.74
+  tiempoDeSpawn: 2
+--- !u!4 &458799942
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458799940}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.41, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &661257828
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,8 +1119,8 @@ Transform:
   m_GameObject: {fileID: 1294992453}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7043521, z: -0, w: 0.7098508}
-  m_LocalPosition: {x: -1.599, y: -1.64, z: 0.18}
-  m_LocalScale: {x: 3.8214097, y: 11.053998, z: 0.40113676}
+  m_LocalPosition: {x: -3.28, y: -1.64, z: 0.25}
+  m_LocalScale: {x: 3.8214097, y: 11.053998, z: 1.0776732}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1766719799}
@@ -1950,6 +1997,10 @@ PrefabInstance:
       propertyPath: directorCanvas
       value: 
       objectReference: {fileID: 1573171397}
+    - target: {fileID: 5508513579090312440, guid: 1b87c602501b4224fafeebd2c89dedf5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.025440404
+      objectReference: {fileID: 0}
     - target: {fileID: 5953802822127102823, guid: 1b87c602501b4224fafeebd2c89dedf5, type: 3}
       propertyPath: m_Name
       value: reloj
@@ -1981,3 +2032,4 @@ SceneRoots:
   - {fileID: 1269349153}
   - {fileID: 661257830}
   - {fileID: 334823090}
+  - {fileID: 458799942}
