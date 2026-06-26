@@ -12,7 +12,11 @@ public class Disparo : MonoBehaviour
     {
         if (other.gameObject.CompareTag("enemy"))
         {
-            Destroy(other.gameObject);
+            MovimientoEnemigo enemmigo = other.gameObject.GetComponent<MovimientoEnemigo>();
+            if (enemmigo != null)
+            {
+                enemmigo.quitarVida(1);
+            }
         }
     }
 

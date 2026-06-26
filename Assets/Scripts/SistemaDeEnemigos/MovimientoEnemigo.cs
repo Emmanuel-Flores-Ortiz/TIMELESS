@@ -6,9 +6,15 @@ public class MovimientoEnemigo : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Transform player;
     private Vector3 forward, right;
-    
+
+    private int vidaActual;
+
     void Start()
     {
+        if (datosEnemigos != null)
+        {
+            vidaActual = datosEnemigos.vida;
+        }
         GameObject jugadorObj = GameObject.FindWithTag("Player");
         spriteRenderer = GetComponent<SpriteRenderer>();
         
@@ -42,6 +48,16 @@ public class MovimientoEnemigo : MonoBehaviour
         if (datosEnemigos != null && spriteRenderer != null)
         {
             spriteRenderer.sprite = datosEnemigos.spriteEnemigo;
+        }
+    }
+
+    public void quitarVida(int cantidad)
+    {
+        vidaActual -= cantidad;
+
+        if (vidaActual <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }
