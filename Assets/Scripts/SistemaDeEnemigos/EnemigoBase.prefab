@@ -110,9 +110,6 @@ MonoBehaviour:
   datosEnemigos: {fileID: 0}
 <<<<<<< Updated upstream
 --- !u!54 &-5481599568111855900
-=======
---- !u!54 &-758042190271153878
->>>>>>> Stashed changes
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,9 +117,6 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
   m_GameObject: {fileID: 8658083339580576832}
-=======
-  m_GameObject: {fileID: 3628552520004745865}
->>>>>>> Stashed changes
   serializedVersion: 5
   m_Mass: 1
   m_LinearDamping: 0
@@ -145,9 +139,6 @@ Rigidbody:
   m_CollisionDetection: 0
 <<<<<<< Updated upstream
 --- !u!136 &7980979959301228182
-=======
---- !u!136 &3622463649065147092
->>>>>>> Stashed changes
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,9 +169,6 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8658083339580576832}
-=======
-  m_GameObject: {fileID: 3628552520004745865}
->>>>>>> Stashed changes
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -198,28 +186,3 @@ CapsuleCollider:
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 <<<<<<< Updated upstream
-=======
---- !u!136 &9158942644135448158
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3628552520004745865}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
->>>>>>> Stashed changes
