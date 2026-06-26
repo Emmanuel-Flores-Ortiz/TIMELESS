@@ -659,58 +659,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 467436561}
   m_CullTransparentMesh: 1
---- !u!1 &696229695
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 696229697}
-  - component: {fileID: 696229696}
-  m_Layer: 0
-  m_Name: CanvaDirector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &696229696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 696229695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ed20e6bd57a12546900a86451b719d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CanvasDirector
-  texto: {fileID: 0}
-  textojefe: {fileID: 0}
-  scriptReloj: {fileID: 0}
-  jugador: {fileID: 0}
-  listaCorazones: []
-  spriteCorazonLleno: {fileID: 0}
-  spriteCorazonVacio: {fileID: 0}
-  panelGameOver: {fileID: 0}
---- !u!4 &696229697
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 696229695}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 960.17285, y: -0.00004, z: 2879.68}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &911992854
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,7 +862,7 @@ MonoBehaviour:
   - {fileID: 911992856}
   spriteCorazonLleno: {fileID: 0}
   spriteCorazonVacio: {fileID: 0}
-  panelGameOver: {fileID: 696229695}
+  panelGameOver: {fileID: 467436561}
 --- !u!114 &1271022114 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2044623377112519397, guid: 24247114cf3e39d42a6aef55ab83ed66, type: 3}
@@ -1765,4 +1713,3 @@ SceneRoots:
   - {fileID: 2118871669}
   - {fileID: 1254631635}
   - {fileID: 1581439142}
-  - {fileID: 696229697}

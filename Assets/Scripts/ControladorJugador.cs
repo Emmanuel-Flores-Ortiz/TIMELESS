@@ -29,7 +29,7 @@ public class ControladorJugador : MonoBehaviour
     void Awake()
     {
         vidaActual = vidaMaxima;
-        enemigoDamage = FindFirstObjectByType<DatosEnemigos>();
+        //enemigoDamage = FindFirstObjectByType<DatosEnemigos>();
         actions = new InputSystem_Actions();
         rb = GetComponent<Rigidbody>();
     }
@@ -142,9 +142,11 @@ public class ControladorJugador : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        Debug.Log("Jugador detectado");
+        if (other.CompareTag("enemy"))
         {
             dañoRecibido();
+            Debug.Log("Jugador detectado y daño hecho");
         }
     }
 }
