@@ -635,7 +635,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3492bcbb0302b8047a413db1229c8e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GestorSpawnEnemigos
-  enemigoPrefab: {fileID: 2118871664}
+  prefabEnemigoFicha: {fileID: 8658083339580576832, guid: 5baed3c66266ec349a5911e7aba5e12b, type: 3}
+  listaDeFichas:
+  - {fileID: 11400000, guid: 803f6691d9785ab4794cdc74b192e9c6, type: 2}
   radio: 10
   tiempoDeSpawn: 2
 --- !u!1 &1823688464
@@ -972,7 +974,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2118871665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -985,8 +987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5438123930fe9e47b7417cac11d3d0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeEnemigos
-  speed: 5
-  player: {fileID: 465902767}
+  datosEnemigos: {fileID: 0}
 --- !u!65 &2118871666
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1074,7 +1075,7 @@ Transform:
   m_GameObject: {fileID: 2118871664}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.37, y: 1.53, z: 4.21496}
+  m_LocalPosition: {x: -10.82, y: 2, z: 4.21496}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -3,7 +3,11 @@ using System.Collections;
 
 public class GestorSpawnEnemigos : MonoBehaviour
 {
-    public GameObject enemigoPrefab;
+    GameObject nuevoEnemigo;
+    
+    public GameObject prefabEnemigoFicha;
+    public DatosEnemigos[] listaDeFichas;
+    
     public float radio = 15f;
     public float tiempoDeSpawn = 2f;
 
@@ -16,11 +20,14 @@ public class GestorSpawnEnemigos : MonoBehaviour
     {
         while (true)
         {
-            Vector2 puntoCirculo = Random.insideUnitCircle.normalized;
+            int indiceAleatorio = Random.Range(0, listaDeFichas.Length);
+            DatosEnemigos fichaElegida = listaDeFichas[indiceAleatorio];
             
+            Vector2 puntoCirculo = Random.insideUnitCircle.normalized;
             Vector3 posicionSpawn = new Vector3(puntoCirculo.x * radio, 2, puntoCirculo.y * radio);
             
-            Instantiate(enemigoPrefab, posicionSpawn, Quaternion.identity);
+            nuevoEnemigo = Instantiate(prefabEnemigoFicha, posicionSpawn, Quaternion.identity);     
+            nuevoEnemigo.GetComponent<MovimientoEnemigo>().InicializarEnemigo(fichaElegida);
             
             yield return new WaitForSeconds(tiempoDeSpawn);
         }
