@@ -1,5 +1,4 @@
-using UnityEngine;
-
+using UnityEngine; 
 public class Reloj : MonoBehaviour
 {
     [Header("Transformaciones del Reloj 3D")]
@@ -18,14 +17,23 @@ public class Reloj : MonoBehaviour
     private float hora = 0f;
     private bool spawnboss = false;
 
+    public GameObject minutero;
+
     private float Adelantamiento = 0f;
 
-    public bool Juego { get; private set; } = true;
-    public int HoraTexto { get; private set; }
-    public int MinutoTexto { get; private set; }
+    private Vector3 escalaOriginal;
+
+    public bool Juego= true;
+    public int HoraTexto;
+    public int MinutoTexto;
 
     void Start()
     {
+        
+        if (minutero != null)
+        {
+            escalaOriginal = minutero.transform.localScale;
+        }
         // hora = 86000f;
     }
 
@@ -33,41 +41,52 @@ public class Reloj : MonoBehaviour
     {
         if (Juego)
         {
-         
             hora += Time.deltaTime * tiempo;
 
-           
             if (Adelantamiento > 0f)
             {
-                
                 float pasoAdelanto = velocidadAdelanto * Time.deltaTime;
 
-                // Evitamos pasarnos de la cantidad que queríamos adelantar
                 if (pasoAdelanto > Adelantamiento)
                 {
                     pasoAdelanto = Adelantamiento;
                 }
 
-                // Añadimos el paso al reloj y se lo restamos al tiempo pendiente
                 hora += pasoAdelanto;
                 Adelantamiento -= pasoAdelanto;
+
+              
+                if (minutero != null)
+                {
+                    Vector3 escalaModificada = escalaOriginal;
+                    escalaModificada.x += 0.16f; 
+                    minutero.transform.localScale = escalaModificada;
+                }
+            }
+            else
+            {
+                
+                if (minutero != null)
+                {
+                    minutero.transform.localScale = escalaOriginal;
+                }
             }
         }
 
-        // Cálculos de tiempo transcurrido
+        // Cálculos de tiempo 
         float minutos = hora / 60f;
         float horas = minutos / 60f;
         float relojHora = horas % 12f;
         float relojMinutos = minutos % 60f;
 
-        // Rotación de las manecillas
+        // Rotación 
         float manecillaH = relojHora * 30f;
         float manecillaM = relojMinutos * 6f;
 
         pivothoras.localRotation = Quaternion.Euler(0, manecillaH, 0);
         pivotminutos.localRotation = Quaternion.Euler(0, manecillaM, 0);
 
-        // Cálculo del tiempo restante para el Canvas
+        // Cálculo del tiempo restante
         float horasRestantes = limiteHoras - horas;
 
         if (horasRestantes < 0f)
@@ -98,7 +117,6 @@ public class Reloj : MonoBehaviour
     {
         if (Juego)
         {
-            
             Adelantamiento += 3600f;
         }
     }

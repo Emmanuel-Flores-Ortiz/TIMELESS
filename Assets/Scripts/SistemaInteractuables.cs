@@ -58,7 +58,6 @@ public class SistemaInteractuables : MonoBehaviour
     {
         if (enEnfriamiento) return;
 
-        
         scriptReloj.adelantar(); 
         coll.enabled = false; 
 
@@ -68,7 +67,7 @@ public class SistemaInteractuables : MonoBehaviour
         StartCoroutine(RutinaEnfriamiento());
 
         IEnumerator RutinaEnfriamiento()
-    {
+        {
         enEnfriamiento = true;
 
         yield return new WaitForSeconds(30f);
@@ -81,7 +80,7 @@ public class SistemaInteractuables : MonoBehaviour
         }
 
         Debug.Log("Enfriamiento terminado. Listo para usarse de nuevo.");
-    }
+        }
 
 }
 
