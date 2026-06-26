@@ -17,6 +17,7 @@ public class MovimientoEnemigo : MonoBehaviour
         }
         GameObject jugadorObj = GameObject.FindWithTag("Player");
         spriteRenderer = GetComponent<SpriteRenderer>();
+       
         
         if (jugadorObj != null)
         {

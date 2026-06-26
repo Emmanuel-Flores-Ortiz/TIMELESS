@@ -1526,7 +1526,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2044623377112519397, guid: 24247114cf3e39d42a6aef55ab83ed66, type: 3}
       propertyPath: speed
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2044623377112519397, guid: 24247114cf3e39d42a6aef55ab83ed66, type: 3}
       propertyPath: jumpForce

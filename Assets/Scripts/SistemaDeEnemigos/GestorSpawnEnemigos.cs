@@ -7,12 +7,14 @@ public class GestorSpawnEnemigos : MonoBehaviour
     
     public GameObject prefabEnemigoFicha;
     public DatosEnemigos[] listaDeFichas;
+    Collider2D col;
     
     public float radio = 15f;
     public float tiempoDeSpawn = 2f;
 
     void Start()
     {
+        col = GetComponent<Collider2D>();
         StartCoroutine(SpawnDeEnemigos());
     }
 
