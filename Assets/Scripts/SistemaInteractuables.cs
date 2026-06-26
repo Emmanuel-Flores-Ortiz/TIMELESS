@@ -5,14 +5,15 @@ using Unity.VisualScripting;
 
 public class SistemaInteractuables : MonoBehaviour
 {
-    public enum TipoObjeto {corazon, zanahoria, pata}
+    public enum TipoObjeto {corazon, zanahoria, pata, minutero}
     //--VARIABLES DE LOS OBJETOS--
 
     //VARIABLES TIPO ESTRUCTURA
     public Collider coll;
     [SerializeField] private TipoObjeto tipoObjeto;
     public ControladorJugador controlJugador;
-
+    public Reloj scriptReloj;
+    private bool enEnfriamiento = false;
 
     //INICIALIZO TODAS MIS VARIABLES QUE USARE EN TODO MOMENTO
     private void Awake()
@@ -54,12 +55,35 @@ public class SistemaInteractuables : MonoBehaviour
     }
 
     void eventotiempo()
-    {    
-        coll.enabled = false;
-        //Coloca aqui los eventos del tiempo
-        Destroy(gameObject);
-        Debug.Log("MENSAJE DE PRUEBA");
+    {
+        if (enEnfriamiento) return;
+
+        
+        scriptReloj.adelantar(); 
+        coll.enabled = false; 
+
+        Debug.Log("MENSAJE DE PRUEBA - El tiempo se adelantó.");
+
+      
+        StartCoroutine(RutinaEnfriamiento());
+
+        IEnumerator RutinaEnfriamiento()
+    {
+        enEnfriamiento = true;
+
+        yield return new WaitForSeconds(30f);
+
+        enEnfriamiento = false;
+
+        if (coll != null)
+        {
+            coll.enabled = true; 
+        }
+
+        Debug.Log("Enfriamiento terminado. Listo para usarse de nuevo.");
     }
+
+}
 
 
     //ONTRIGGER
@@ -75,6 +99,10 @@ public class SistemaInteractuables : MonoBehaviour
 
                 case TipoObjeto.zanahoria:
                     eventoZanahoria();
+                    break;
+
+                case TipoObjeto.minutero:
+                    eventotiempo();
                     break;
             }
         }
