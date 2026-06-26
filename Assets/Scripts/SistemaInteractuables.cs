@@ -40,7 +40,7 @@ public class SistemaInteractuables : MonoBehaviour
         if (controlJugador != null)
         {
             coll.enabled = false;
-            controlJugador.walkingSpeed = 10f;
+            controlJugador.speed = 10f;
             Destroy(gameObject);
             Debug.Log("zanahoria recolectada");
         }
@@ -49,7 +49,7 @@ public class SistemaInteractuables : MonoBehaviour
     void eventopata()
     {
         coll.enabled = false;
-        controlJugador.walkingSpeed = 10f;
+        controlJugador.speed = 10f;
         Destroy(gameObject);
         Debug.Log("zanahoria recolectada");
     }
@@ -62,7 +62,7 @@ public class SistemaInteractuables : MonoBehaviour
         scriptReloj.adelantar(); 
         coll.enabled = false; 
 
-        Debug.Log("MENSAJE DE PRUEBA - El tiempo se adelantó.");
+        Debug.Log("MENSAJE DE PRUEBA - El tiempo se adelantï¿½.");
 
       
         StartCoroutine(RutinaEnfriamiento());
