@@ -889,7 +889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3492bcbb0302b8047a413db1229c8e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GestorSpawnEnemigos
-  prefabEnemigoFicha: {fileID: 3628552520004745865, guid: 5baed3c66266ec349a5911e7aba5e12b, type: 3}
+  prefabEnemigoFicha: {fileID: 1271759523409937655, guid: 5baed3c66266ec349a5911e7aba5e12b, type: 3}
   listaDeFichas:
   - {fileID: 11400000, guid: 803f6691d9785ab4794cdc74b192e9c6, type: 2}
   radio: 10
