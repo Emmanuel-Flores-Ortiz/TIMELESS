@@ -584,6 +584,133 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2984403216995742841, guid: 24247114cf3e39d42a6aef55ab83ed66, type: 3}
   m_PrefabInstance: {fileID: 3334399257506658266}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &467436561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 467436562}
+  - component: {fileID: 467436564}
+  - component: {fileID: 467436563}
+  m_Layer: 5
+  m_Name: PanelGameOver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &467436562
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467436561}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1254631635}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &467436563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467436561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.392}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &467436564
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467436561}
+  m_CullTransparentMesh: 1
+--- !u!1 &696229695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 696229697}
+  - component: {fileID: 696229696}
+  m_Layer: 0
+  m_Name: CanvaDirector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &696229696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696229695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed20e6bd57a12546900a86451b719d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CanvasDirector
+  texto: {fileID: 0}
+  textojefe: {fileID: 0}
+  scriptReloj: {fileID: 0}
+  jugador: {fileID: 0}
+  listaCorazones: []
+  spriteCorazonLleno: {fileID: 0}
+  spriteCorazonVacio: {fileID: 0}
+  panelGameOver: {fileID: 0}
+--- !u!4 &696229697
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696229695}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960.17285, y: -0.00004, z: 2879.68}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &911992854
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,6 +798,7 @@ GameObject:
   - component: {fileID: 1254631634}
   - component: {fileID: 1254631633}
   - component: {fileID: 1254631632}
+  - component: {fileID: 1254631636}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -756,6 +884,7 @@ RectTransform:
   - {fileID: 324758106}
   - {fileID: 1536439881}
   - {fileID: 911992855}
+  - {fileID: 467436562}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -763,6 +892,40 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1254631636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254631631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed20e6bd57a12546900a86451b719d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CanvasDirector
+  texto: {fileID: 0}
+  textojefe: {fileID: 0}
+  scriptReloj: {fileID: 0}
+  jugador: {fileID: 1271022114}
+  listaCorazones:
+  - {fileID: 324758107}
+  - {fileID: 1536439882}
+  - {fileID: 911992856}
+  spriteCorazonLleno: {fileID: 0}
+  spriteCorazonVacio: {fileID: 0}
+  panelGameOver: {fileID: 696229695}
+--- !u!114 &1271022114 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2044623377112519397, guid: 24247114cf3e39d42a6aef55ab83ed66, type: 3}
+  m_PrefabInstance: {fileID: 3334399257506658266}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43437ca9abadc364badfd4f7007a2b60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CONTROL
 --- !u!1 &1516154074
 GameObject:
   m_ObjectHideFlags: 0
@@ -1532,6 +1695,10 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2044623377112519397, guid: 24247114cf3e39d42a6aef55ab83ed66, type: 3}
+      propertyPath: enemigoDamage
+      value: 
+      objectReference: {fileID: 11400000, guid: 803f6691d9785ab4794cdc74b192e9c6, type: 2}
     - target: {fileID: 2770783738301262786, guid: 24247114cf3e39d42a6aef55ab83ed66, type: 3}
       propertyPath: m_Name
       value: player
@@ -1598,3 +1765,4 @@ SceneRoots:
   - {fileID: 2118871669}
   - {fileID: 1254631635}
   - {fileID: 1581439142}
+  - {fileID: 696229697}
