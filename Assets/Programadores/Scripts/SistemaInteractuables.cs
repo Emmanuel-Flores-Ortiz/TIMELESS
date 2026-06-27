@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 
 public class SistemaInteractuables : MonoBehaviour
 {
-    public enum TipoObjeto {corazon, zanahoria, pata, minutero}
+    public enum TipoObjeto {corazon, tijeras, pata, minutero}
     //--VARIABLES DE LOS OBJETOS--
 
     //VARIABLES TIPO ESTRUCTURA
@@ -35,14 +35,13 @@ public class SistemaInteractuables : MonoBehaviour
     }
 
 
-    void eventoZanahoria()
+    void eventoTijeras()
     {
         if (controlJugador != null)
         {
             coll.enabled = false;
-            controlJugador.speed = 10f;
             Destroy(gameObject);
-            Debug.Log("zanahoria recolectada");
+            Debug.Log("tijera recolectada");
         }
     }
 
@@ -51,7 +50,7 @@ public class SistemaInteractuables : MonoBehaviour
         coll.enabled = false;
         controlJugador.speed = 10f;
         Destroy(gameObject);
-        Debug.Log("pata recolectada");
+        Debug.Log("aumento de movimiento");
     }
 
     void eventotiempo()
@@ -96,8 +95,8 @@ public class SistemaInteractuables : MonoBehaviour
                     eventoCorazon();
                     break;
 
-                case TipoObjeto.zanahoria:
-                    eventoZanahoria();
+                case TipoObjeto.tijeras:
+                    eventoTijeras();
                     break;
 
                 case TipoObjeto.pata:
