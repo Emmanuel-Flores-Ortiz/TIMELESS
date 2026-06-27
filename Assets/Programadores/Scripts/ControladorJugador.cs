@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 using static SistemaInteractuables;
 
 public class ControladorJugador : MonoBehaviour
@@ -87,41 +88,55 @@ public class ControladorJugador : MonoBehaviour
         }
     }
 
+    //ESTA FUNCION ME AYUDA A SABER CUANTO TIEMPO VA A REALIZARCE UNA ANIMACION
+    private float Tiempo_Animacion()
+    {
+        AnimatorStateInfo infoAnimacion = animator.GetCurrentAnimatorStateInfo(0);
+        float tiempoTotal = infoAnimacion.length;
+        return tiempoTotal;
+    }
+
     public void Attacking(InputAction.CallbackContext ctx)
     {
         if (ctx.performed)
         {
-            // Validar que el punto de ataque esté asignado en el inspector para evitar Crash
-            if (puntoAtaque == null)
+            StartCoroutine(Corrutina_Attack());
+        }
+    }
+
+    IEnumerator Corrutina_Attack()
+    {
+        // Validar que el punto de ataque esté asignado en el inspector para evitar Crash
+        if (puntoAtaque == null)
+        {
+            Debug.LogWarning("¡Falta asignar el PuntoAtaque en el Inspector!"); 
+        }
+
+        rb.linearVelocity = Vector3.zero;
+        animator.SetBool("isAttack", true);
+        Debug.Log("¡Ataque realizado!");
+
+        yield return null;
+
+        yield return new WaitForSeconds(Tiempo_Animacion());
+
+        animator.SetBool("isAttack", false);
+
+        // Detectamos los colliders en el rango de ataque
+        Collider[] enemigosGolpeados = Physics.OverlapSphere(puntoAtaque.position, rangoAtaque, Enemigos);
+
+        foreach (Collider enemigo in enemigosGolpeados)
+        {
+            // CORRECCIÓN: Buscamos el SCRIPT de vida del enemigo, no el ScriptableObject entero
+            MovimientoEnemigo scriptEnemigo = enemigo.GetComponent<MovimientoEnemigo>();
+
+            if (scriptEnemigo != null)
             {
-                Debug.LogWarning("¡Falta asignar el PuntoAtaque en el Inspector!");
-                return;
-            }
-
-            rb.linearVelocity = Vector3.zero;
-            Debug.Log("¡Ataque realizado!");
-
-            // Detectamos los colliders en el rango de ataque
-            Collider[] enemigosGolpeados = Physics.OverlapSphere(puntoAtaque.position, rangoAtaque, Enemigos);
-
-            foreach (Collider enemigo in enemigosGolpeados)
-            {
-                // CORRECCIÓN: Buscamos el SCRIPT de vida del enemigo, no el ScriptableObject entero
-                MovimientoEnemigo scriptEnemigo = enemigo.GetComponent<MovimientoEnemigo>();
-
-                if (scriptEnemigo != null)
-                {
-                    scriptEnemigo.RecibirDañoYEmpuje(dañoAtaque, ultimaDireccionMirado, fuerzaEmpuje);
-                }
+                scriptEnemigo.RecibirDañoYEmpuje(dañoAtaque, ultimaDireccionMirado, fuerzaEmpuje);
             }
         }
     }
 
-    // Función para animación (OPCIONAL)
-    public void EndAttack()
-    {
-        // Lógica para terminar animación si es necesario
-    }
 
     void Start()
     {
