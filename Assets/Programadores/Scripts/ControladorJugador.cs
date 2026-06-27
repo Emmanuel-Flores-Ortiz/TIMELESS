@@ -28,6 +28,7 @@ public class ControladorJugador : MonoBehaviour
     private Vector3 forward, right;
     private Vector2 inputMovimiento;
     private bool enElSuelo;
+    private SpriteRenderer spriteRenderer;
 
     // EVENTOS (Notificaciones para el CanvasDirector)
     public event Action<int> ActualizacionVida;
@@ -42,6 +43,7 @@ public class ControladorJugador : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         vidaActual = vidaMaxima;
         actions = new InputSystem_Actions();
         rb = GetComponent<Rigidbody>();
@@ -162,8 +164,15 @@ public class ControladorJugador : MonoBehaviour
             // Guardamos la última dirección a la que se movió de forma limpia
             ultimaDireccionMirado = direccion.normalized;
 
-            // Hace que el objeto rote hacia donde camina
-            transform.forward = ultimaDireccionMirado;
+            // En lugar de rotar el objeto 3D, volteamos el Sprite plano.
+            if (inputMovimiento.x < 0)
+            {
+                spriteRenderer.flipX = true;  // Voltea el sprite a la izquierda
+            }
+            else if (inputMovimiento.x > 0)
+            {
+                spriteRenderer.flipX = false; // Vuelve a mirar a la derecha (normal)
+            }
         }
 
         // Pasamos la velocidad vertical real del personaje (física) al parámetro vY
