@@ -76,7 +76,7 @@ public class ControladorJugador : MonoBehaviour
         }
     }
 
-    void Attacking(InputAction.CallbackContext ctx)
+    public void Attacking(InputAction.CallbackContext ctx)
     {
         //animator.SetBool("isAttack", true);
         rb.linearVelocity = new Vector3(0, 0, 0);
