@@ -1,9 +1,11 @@
-using UnityEngine; 
+using UnityEngine;
+
 public class Reloj : MonoBehaviour
 {
     [Header("Transformaciones del Reloj 3D")]
     public Transform pivothoras;
     public Transform pivotminutos;
+    public Transform pivotmesh; // <--- Tu pivot mesh actual
     public RectTransform minuteroUI;
 
     [Header("Configuración del Jefe")]
@@ -24,18 +26,16 @@ public class Reloj : MonoBehaviour
 
     private Vector3 escalaOriginal;
 
-    public bool Juego= true;
+    public bool Juego = true;
     public int HoraTexto;
     public int MinutoTexto;
 
     void Start()
     {
-        
         if (minutero != null)
         {
             escalaOriginal = minutero.transform.localScale;
         }
-        // hora = 86000f;
     }
 
     void Update()
@@ -56,17 +56,15 @@ public class Reloj : MonoBehaviour
                 hora += pasoAdelanto;
                 Adelantamiento -= pasoAdelanto;
 
-              
                 if (minutero != null)
                 {
                     Vector3 escalaModificada = escalaOriginal;
-                    escalaModificada.x += 0.18f; 
+                    escalaModificada.x += 0.18f;
                     minutero.transform.localScale = escalaModificada;
                 }
             }
             else
             {
-                
                 if (minutero != null)
                 {
                     minutero.transform.localScale = escalaOriginal;
@@ -87,10 +85,16 @@ public class Reloj : MonoBehaviour
         pivothoras.localRotation = Quaternion.Euler(0, manecillaH, 0);
         pivotminutos.localRotation = Quaternion.Euler(0, manecillaM, 0);
 
-        // Rotación 2D para el UI (Agrégalo)
+        // --- NUEVA LÓGICA DUPLICADA PARA PIVOT MESH ---
+        if (pivotmesh != null)
+        {
+            pivotmesh.localRotation = Quaternion.Euler(0, manecillaM, 0);
+        }
+        // ----------------------------------------------
+
+        // Rotación 2D para el UI
         if (minuteroUI != null)
         {
-            // En UI rotamos en el eje Z. El '-' es porque la UI gira inverso al espacio 3D estándar
             minuteroUI.localRotation = Quaternion.Euler(0, 0, -manecillaM);
         }
 
