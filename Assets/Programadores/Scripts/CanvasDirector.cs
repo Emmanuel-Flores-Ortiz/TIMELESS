@@ -71,7 +71,7 @@ public class CanvasDirector : MonoBehaviour
     {
         for (int i = 0; i < listaCorazones.Length; i++)
         {
-            if (i <= jugador.vidaActual)
+            if (i < jugador.vidaActual)
             {
                 listaCorazones[i].enabled = true;
             }
