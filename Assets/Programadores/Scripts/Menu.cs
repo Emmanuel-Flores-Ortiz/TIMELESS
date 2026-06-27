@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class menu : MonoBehaviour
+public class Menu : MonoBehaviour
 {
     public void Cambiar(string nombreEscena)
     {
