@@ -10,23 +10,21 @@ public class SpawnBuffs : MonoBehaviour
     public int cantidadPorHora = 3;
 
     [Header("Referencia al Reloj")]
-    public Reloj scriptReloj; // ¡IMPORTANTE! Arrastra el GameObject que tiene el script Reloj aquí desde el Inspector
+    public Reloj scriptReloj; 
 
-    private int ultimaHoraSpawn = -1; // Iniciamos en -1 para que el primer spawn ocurra inmediatamente en la hora 0
+    private int ultimaHoraSpawn = 0;
 
     void Update()
     {
-        // Si no hemos asignado el reloj o el juego se detuvo (ej. apareció el jefe), no hacemos nada
+       
         if (scriptReloj == null || !scriptReloj.Juego) return;
-
-        // Obtenemos la hora actual del juego (0, 1, 2, 3...)
+     
         int horaActual = scriptReloj.ObtenerHoraActual();
 
-        // Si la hora actual es mayor a la última hora en la que spawneamos, es hora de crear más buffs
         if (horaActual > ultimaHoraSpawn)
         {
             GenerarBuffs(cantidadPorHora);
-            ultimaHoraSpawn = horaActual; // Actualizamos el registro para no volver a spawnear hasta la siguiente hora
+            ultimaHoraSpawn = horaActual; 
         }
     }
 
