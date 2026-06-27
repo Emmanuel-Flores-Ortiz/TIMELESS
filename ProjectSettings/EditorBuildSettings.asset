@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Programadores/Escenas/emmaniel.unity
+    path: Assets/Programadores/Escenas/EscenasExperimentales/emmaniel.unity
     guid: 8124e5870f4fd4c779e7a5f994e84ad1
   - enabled: 1
     path: Assets/Programadores/Escenas/Gameplay.unity

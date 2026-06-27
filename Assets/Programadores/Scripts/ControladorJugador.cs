@@ -36,10 +36,11 @@ public class ControladorJugador : MonoBehaviour
     public InputSystem_Actions actions;
     private Rigidbody rb;
     public DatosEnemigos enemigoDatos; // Ficha técnica global de daño enemigo
-
+    Animator animator;
 
     void Awake()
     {
+        animator = GetComponent<Animator>();
         vidaActual = vidaMaxima;
         actions = new InputSystem_Actions();
         rb = GetComponent<Rigidbody>();
@@ -81,6 +82,7 @@ public class ControladorJugador : MonoBehaviour
         if (enElSuelo)
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
+            animator.SetFloat("vY", rb.linearVelocity.y);
             enElSuelo = false;
         }
     }
@@ -148,6 +150,12 @@ public class ControladorJugador : MonoBehaviour
             // Hace que el objeto rote hacia donde camina
             transform.forward = ultimaDireccionMirado;
         }
+
+        // Pasamos la velocidad vertical real del personaje (física) al parámetro vY
+        animator.SetFloat("vY", rb.linearVelocity.y);
+
+        // Pasamos el estado del suelo al parámetro enSuelo
+        animator.SetBool("enSuelo", enElSuelo);
     }
 
     // Dibuja la esfera en la ventana 'Scene' de Unity sin dar play para medir el alcance
