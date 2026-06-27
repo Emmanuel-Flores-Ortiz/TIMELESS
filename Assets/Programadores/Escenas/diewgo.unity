@@ -375,6 +375,10 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2044623377112519397, guid: 24247114cf3e39d42a6aef55ab83ed66, type: 3}
+      propertyPath: enemigoDamage
+      value: 
+      objectReference: {fileID: 11400000, guid: 803f6691d9785ab4794cdc74b192e9c6, type: 2}
     - target: {fileID: 2770783738301262786, guid: 24247114cf3e39d42a6aef55ab83ed66, type: 3}
       propertyPath: m_Name
       value: player
@@ -615,7 +619,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpawnBuffs
   prefabBuff: {fileID: 631908891210964609, guid: 08d86e019321d1142b5a839059331bd1, type: 3}
   radio: 8.74
-  tiempoDeSpawn: 2
+  cantidadPorHora: 3
+  scriptReloj: {fileID: 362279528}
 --- !u!4 &458799942
 Transform:
   m_ObjectHideFlags: 0

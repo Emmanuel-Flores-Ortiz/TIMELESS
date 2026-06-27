@@ -120,4 +120,11 @@ public class Reloj : MonoBehaviour
             Adelantamiento += 3600f;
         }
     }
+
+    public int ObtenerHoraActual()
+    {
+        float minutos = hora / 60f;
+        float horas = minutos / 60f;
+        return Mathf.FloorToInt(horas);
+    }
 }

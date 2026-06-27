@@ -4,40 +4,52 @@ using static SistemaInteractuables;
 
 public class SpawnBuffs : MonoBehaviour
 {
+    [Header("Configuración de Spawn")]
     public GameObject prefabBuff;
-
     public float radio = 15f;
-    public float tiempoDeSpawn = 2f;
+    public int cantidadPorHora = 3;
 
-    void Start()
+    [Header("Referencia al Reloj")]
+    public Reloj scriptReloj; // ¡IMPORTANTE! Arrastra el GameObject que tiene el script Reloj aquí desde el Inspector
+
+    private int ultimaHoraSpawn = -1; // Iniciamos en -1 para que el primer spawn ocurra inmediatamente en la hora 0
+
+    void Update()
     {
-        StartCoroutine(SpawnDeEnemigos());
+        // Si no hemos asignado el reloj o el juego se detuvo (ej. apareció el jefe), no hacemos nada
+        if (scriptReloj == null || !scriptReloj.Juego) return;
+
+        // Obtenemos la hora actual del juego (0, 1, 2, 3...)
+        int horaActual = scriptReloj.ObtenerHoraActual();
+
+        // Si la hora actual es mayor a la última hora en la que spawneamos, es hora de crear más buffs
+        if (horaActual > ultimaHoraSpawn)
+        {
+            GenerarBuffs(cantidadPorHora);
+            ultimaHoraSpawn = horaActual; // Actualizamos el registro para no volver a spawnear hasta la siguiente hora
+        }
     }
 
-    IEnumerator SpawnDeEnemigos()
+    void GenerarBuffs(int cantidad)
     {
-        while (true)
+        // Este bucle se repetirá la cantidad de veces que le digamos (3 veces)
+        for (int i = 0; i < cantidad; i++)
         {
             Vector2 puntoCirculo = Random.insideUnitCircle.normalized;
             Vector3 posicionSpawn = new Vector3(puntoCirculo.x * radio, 2, puntoCirculo.y * radio);
 
-            // 1. Instanciamos el prefab y lo guardamos en una variable local
+            // 1. Instanciamos el prefab
             GameObject buff = Instantiate(prefabBuff, posicionSpawn, Quaternion.identity);
 
-            // 2. Buscamos el script 'SistemaInteractuables' en el objeto recién creado
+            // 2. Buscamos el script en el objeto creado
             SistemaInteractuables scriptInteractuable = buff.GetComponent<SistemaInteractuables>();
 
             if (scriptInteractuable != null)
             {
-                // 3. Generamos un número aleatorio entre 0 y 2 (Random.Range con enteros es exclusivo en el máximo)
+                // 3. Generamos el número aleatorio y asignamos el Enum
                 int aleatorio = Random.Range(0, 3);
-
-                // 4. Asignamos el valor aleatorio convirtiendo el número al tipo de tu Enum
-                // ¡IMPORTANTE! Reemplaza "NombreDeTuEnum" y "tipoObjeto" por los nombres reales que tienes en tu script SistemaInteractuables
                 scriptInteractuable.tipoObjeto = (TipoObjeto)aleatorio;
             }
-
-            yield return new WaitForSeconds(tiempoDeSpawn);
         }
     }
 
