@@ -750,7 +750,7 @@ GameObject:
   - component: {fileID: 458799941}
   - component: {fileID: 458799943}
   m_Layer: 0
-  m_Name: gameManager
+  m_Name: PowerUpManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1643,7 +1643,7 @@ GameObject:
   - component: {fileID: 1269349150}
   - component: {fileID: 1269349154}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: boton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
