@@ -5,40 +5,47 @@ using static SistemaInteractuables;
 
 public class ControladorJugador : MonoBehaviour
 {
-    //VARIABLES RELACIONADAS CON LA VIDA DEL PERSONAJE
+    // VARIABLES RELACIONADAS CON LA VIDA DEL PERSONAJE
+    [Header("Estadísticas de Vida")]
     public int vidaMaxima = 3;
     public int vidaActual;
 
-    //VARIABLES RELACIONADAS CON STUN
-    Vector3 direccionMirada;
+    // VARIABLES RELACIONADAS CON ATAQUE
+    [Header("Configuración de Ataque")]
+    [SerializeField] private Transform puntoAtaque; // Objeto vacío al frente del jugador
+    [SerializeField] private float rangoAtaque = 1.5f; // Radio del círculo de golpe
+    [SerializeField] private LayerMask capaEnemigos; // Capa exclusiva de los enemigos
+    [SerializeField] private float fuerzaEmpuje = 15f;
+    [SerializeField] private int dañoAtaque = 1; // Daño base (modificable por power-ups)
 
-    //VARIABLES RELACIONADAS CON EL MOVIMIENTO
+    private Vector3 ultimaDireccionMirado = Vector3.forward;
+
+    // VARIABLES RELACIONADAS CON EL MOVIMIENTO
+    [Header("Configuración de Movimiento")]
     public float speed;
     public float jumpForce;
     private Vector3 forward, right;
     private Vector2 inputMovimiento;
     private bool enElSuelo;
 
+    // EVENTOS (Notificaciones para el CanvasDirector)
     public event Action<int> ActualizacionVida;
     public event Action GameOver;
 
-
-    //VARIABLES RELACIONADAS CON OTROS SCRIPTS/COMPONENTES
+    // VARIABLES RELACIONADAS CON OTROS SCRIPTS/COMPONENTES
     public InputSystem_Actions actions;
-    Rigidbody rb;
-    public DatosEnemigos enemigoDamage;
+    private Rigidbody rb;
+    public DatosEnemigos enemigoDatos; // Ficha técnica global de daño enemigo
 
 
     void Awake()
     {
         vidaActual = vidaMaxima;
-        //enemigoDamage = FindFirstObjectByType<DatosEnemigos>();
         actions = new InputSystem_Actions();
         rb = GetComponent<Rigidbody>();
     }
 
-
-    //SISTEMA DE HABILITACION DEL INPUTSYSTEM
+    // SISTEMA DE HABILITACION DEL INPUT SYSTEM
     void OnEnable()
     {
         actions.Player.Enable();
@@ -63,7 +70,7 @@ public class ControladorJugador : MonoBehaviour
         actions.Player.Attack.performed -= Attacking;
     }
 
-    //DETECCION DE LA TECLA DE INPUT PRESIONADA
+    // DETECCION DE LA TECLA DE INPUT PRESIONADA
     void Movement(InputAction.CallbackContext ctx)
     {
         inputMovimiento = ctx.ReadValue<Vector2>();
@@ -75,25 +82,48 @@ public class ControladorJugador : MonoBehaviour
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
             enElSuelo = false;
-            //animator.SetTrigger("Jump");
         }
     }
 
     public void Attacking(InputAction.CallbackContext ctx)
     {
-        //animator.SetBool("isAttack", true);
-        rb.linearVelocity = new Vector3(0, 0, 0);
-        Debug.Log("Ataque realizado");
+        if (ctx.performed)
+        {
+            // Validar que el punto de ataque esté asignado en el inspector para evitar Crash
+            if (puntoAtaque == null)
+            {
+                Debug.LogWarning("¡Falta asignar el PuntoAtaque en el Inspector!");
+                return;
+            }
+
+            rb.linearVelocity = Vector3.zero;
+            Debug.Log("¡Ataque realizado!");
+
+            // Detectamos los colliders en el rango de ataque
+            Collider[] enemigosGolpeados = Physics.OverlapSphere(puntoAtaque.position, rangoAtaque, capaEnemigos);
+
+            foreach (Collider enemigo in enemigosGolpeados)
+            {
+                // CORRECCIÓN: Buscamos el SCRIPT de vida del enemigo, no el ScriptableObject entero
+                MovimientoEnemigo scriptEnemigo = enemigo.GetComponent<MovimientoEnemigo>();
+
+                if (scriptEnemigo != null)
+                {
+                    scriptEnemigo.RecibirDañoYEmpuje(dañoAtaque, ultimaDireccionMirado, fuerzaEmpuje);
+                }
+            }
+        }
     }
 
-    //Funcion para que el ataque no se quede bloqueado en un bucle
+    // Función para animación (OPCIONAL)
     public void EndAttack()
     {
-        //animator.SetBool("isAttack", false);
+        // Lógica para terminar animación si es necesario
     }
 
     void Start()
     {
+        // Configuración de movimiento relativo a la cámara de tu entorno 3D
         forward = Camera.main.transform.forward;
         forward.y = 0;
         forward = Vector3.Normalize(forward);
@@ -103,27 +133,36 @@ public class ControladorJugador : MonoBehaviour
         right = Vector3.Normalize(right);
     }
 
-
-    //ACTUALIZACION DE LAS FISICAS (MOVIMIENTOS)
+    // ACTUALIZACION DE LAS FISICAS (MOVIMIENTOS)
     void Update()
     {
         Vector3 direccion = inputMovimiento.x * right + inputMovimiento.y * forward;
+
         if (direccion.magnitude > 0.1f)
         {
             transform.position += direccion * speed * Time.deltaTime;
-            direccionMirada = direccion;
-        }
 
+            // Guardamos la última dirección a la que se movió de forma limpia
+            ultimaDireccionMirado = direccion.normalized;
+
+            // Hace que el objeto rote hacia donde camina
+            transform.forward = ultimaDireccionMirado;
+        }
     }
 
+    // Dibuja la esfera en la ventana 'Scene' de Unity sin dar play para medir el alcance
+    private void OnDrawGizmosSelected()
+    {
+        if (puntoAtaque == null) return;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(puntoAtaque.position, rangoAtaque);
+    }
 
-    //FUNCIONES DETECTORAS DE SUELO (EVITA QUE EL JUGADOR SALTE INFINITAMENTE)
+    // DETECTORES DE SUELO (EVITA SALTO INFINITO)
     private void OnCollisionEnter(Collision collision)
     {
-        // Revisamos si impactamos con algo desde abajo (el suelo)
         foreach (ContactPoint contacto in collision.contacts)
         {
-            // Si el vector apunta hacia arriba, es el suelo
             if (contacto.normal.y > 0.6f)
             {
                 enElSuelo = true;
@@ -145,15 +184,21 @@ public class ControladorJugador : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        // En cuanto dejas de tocar el objeto, ya no estás en el suelo
         enElSuelo = false;
     }
 
-
-    //EVENTOS RELACIONADOS CON LA VIDA DEL JUGADOR
+    // EVENTOS RELACIONADOS CON LA VIDA DEL JUGADOR
     void dañoRecibido()
     {
-        vidaActual = vidaActual - enemigoDamage.damage;
+        if (enemigoDatos != null)
+        {
+            vidaActual -= enemigoDatos.damage;
+        }
+        else
+        {
+            vidaActual -= 1; // Daño por defecto si no hay ficha asignada
+        }
+
         ActualizacionVida?.Invoke(vidaActual);
 
         if (vidaActual <= 0)
@@ -164,11 +209,39 @@ public class ControladorJugador : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Jugador detectado");
         if (other.CompareTag("enemy"))
         {
             dañoRecibido();
-            Debug.Log("Jugador detectado y daño hecho");
+            Debug.Log("Jugador colisionó con enemigo y recibió daño");
         }
+    }
+
+    // ==========================================================
+    //  MÉTODOS PÚBLICOS PARA MEJORAS (SISTEMA INTERACTUABLES)
+    // ==========================================================
+
+    // Power-up Corazón: Sana una vida sin pasarse del máximo, y actualiza el Canvas
+    public void CurarVida(int cantidad)
+    {
+        vidaActual += cantidad;
+        if (vidaActual > vidaMaxima)
+        {
+            vidaActual = vidaMaxima;
+        }
+        ActualizacionVida?.Invoke(vidaActual); // Notifica al CanvaDirector para encender el corazón
+    }
+
+    // Power-up Daño: Cambia el daño del ataque normal (ej. pasar de 0 a 1)
+    public void MejorarDaño(int nuevoDaño)
+    {
+        dañoAtaque = nuevoDaño;
+        Debug.Log("¡Poder de ataque mejorado a: " + dañoAtaque + "!");
+    }
+
+    // Power-up Movimiento: Incrementa la velocidad del jugador
+    public void AumentarVelocidad(float incremento)
+    {
+        speed += incremento;
+        Debug.Log("¡Velocidad incrementada! Nueva velocidad: " + speed);
     }
 }
