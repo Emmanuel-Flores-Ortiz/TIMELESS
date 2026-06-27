@@ -4,6 +4,7 @@ public class Reloj : MonoBehaviour
     [Header("Transformaciones del Reloj 3D")]
     public Transform pivothoras;
     public Transform pivotminutos;
+    public RectTransform minuteroUI;
 
     [Header("Configuración del Jefe")]
     public GameObject jefe;
@@ -86,6 +87,13 @@ public class Reloj : MonoBehaviour
         pivothoras.localRotation = Quaternion.Euler(0, manecillaH, 0);
         pivotminutos.localRotation = Quaternion.Euler(0, manecillaM, 0);
 
+        // Rotación 2D para el UI (Agrégalo)
+        if (minuteroUI != null)
+        {
+            // En UI rotamos en el eje Z. El '-' es porque la UI gira inverso al espacio 3D estándar
+            minuteroUI.localRotation = Quaternion.Euler(0, 0, -manecillaM);
+        }
+
         // Cálculo del tiempo restante
         float horasRestantes = limiteHoras - horas;
 
@@ -126,5 +134,13 @@ public class Reloj : MonoBehaviour
         float minutos = hora / 60f;
         float horas = minutos / 60f;
         return Mathf.FloorToInt(horas);
+    }
+
+    public void ModificarTiempoDesdeUI(float segundosAñadir)
+    {
+        if (Juego)
+        {
+            hora += segundosAñadir;
+        }
     }
 }

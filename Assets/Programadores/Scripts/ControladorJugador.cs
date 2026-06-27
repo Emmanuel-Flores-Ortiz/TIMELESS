@@ -9,6 +9,9 @@ public class ControladorJugador : MonoBehaviour
     public int vidaMaxima = 3;
     public int vidaActual;
 
+    //VARIABLES RELACIONADAS CON STUN
+    Vector3 direccionMirada;
+
     //VARIABLES RELACIONADAS CON EL MOVIMIENTO
     public float speed;
     public float jumpForce;
@@ -108,7 +111,9 @@ public class ControladorJugador : MonoBehaviour
         if (direccion.magnitude > 0.1f)
         {
             transform.position += direccion * speed * Time.deltaTime;
+            direccionMirada = direccion;
         }
+
     }
 
 
