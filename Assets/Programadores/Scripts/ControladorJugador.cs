@@ -14,7 +14,7 @@ public class ControladorJugador : MonoBehaviour
     [Header("Configuración de Ataque")]
     [SerializeField] private Transform puntoAtaque; // Objeto vacío al frente del jugador
     [SerializeField] private float rangoAtaque = 1.5f; // Radio del círculo de golpe
-    [SerializeField] private LayerMask capaEnemigos; // Capa exclusiva de los enemigos
+    [SerializeField] private LayerMask Enemigos; // Capa exclusiva de los enemigos
     [SerializeField] private float fuerzaEmpuje = 15f;
     [SerializeField] private int dañoAtaque = 1; // Daño base (modificable por power-ups)
 
@@ -100,7 +100,7 @@ public class ControladorJugador : MonoBehaviour
             Debug.Log("¡Ataque realizado!");
 
             // Detectamos los colliders en el rango de ataque
-            Collider[] enemigosGolpeados = Physics.OverlapSphere(puntoAtaque.position, rangoAtaque, capaEnemigos);
+            Collider[] enemigosGolpeados = Physics.OverlapSphere(puntoAtaque.position, rangoAtaque, Enemigos);
 
             foreach (Collider enemigo in enemigosGolpeados)
             {
