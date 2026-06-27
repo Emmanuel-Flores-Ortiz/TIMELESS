@@ -13,7 +13,7 @@ public class Reloj : MonoBehaviour
     [Header("Configuración de Adelanto")]
     public float velocidadAdelanto = 3600f;
 
-    private const float tiempo = 120f;
+    private const float tiempo = 360f;
     private const float limiteHoras = 24f;
     private float hora = 0f;
     private bool spawnboss = false;
