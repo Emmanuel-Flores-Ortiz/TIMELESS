@@ -15,12 +15,18 @@ public class MovimientoEnemigo : MonoBehaviour
     public PaloCarta miPalo;
     public ValorCarta miValor;
 
+    // --- COMPONENTE FÍSICO PARA EL EMPUJE ---
+    private Rigidbody rb;
+
     void Start()
     {
+        // Guardamos la referencia al Rigidbody del enemigo para poder empujarlo
+        rb = GetComponent<Rigidbody>();
+
         canvasDirector = FindFirstObjectByType<CanvasDirector>();
 
         GameObject jugadorObj = GameObject.FindWithTag("Player");
-        spriteRenderer = GetComponent<SpriteRenderer>(); // Por seguridad si no se ejecutó antes
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (jugadorObj != null)
         {
@@ -38,7 +44,7 @@ public class MovimientoEnemigo : MonoBehaviour
 
     void Update()
     {
-        if (player == null || datosEnemigos == null) return; // Seguridad para evitar errores de referencia nula
+        if (player == null || datosEnemigos == null) return;
 
         Vector3 direccionHaciaJugador = (player.position - transform.position).normalized;
         direccionHaciaJugador.y = 0;
@@ -46,16 +52,13 @@ public class MovimientoEnemigo : MonoBehaviour
         transform.position += direccionHaciaJugador * datosEnemigos.speed * Time.deltaTime;
     }
 
-    // Modificamos el método para aceptar la información de la carta aleatoria
     public void InicializarEnemigo(DatosEnemigos nuevaFicha, PaloCarta paloAsignado, ValorCarta valorAsignado)
     {
         datosEnemigos = nuevaFicha;
 
-        // Guardamos su tipo de carta
         miPalo = paloAsignado;
         miValor = valorAsignado;
 
-        // Asignamos la vida basándonos en los datos que acaban de llegar
         if (datosEnemigos != null)
         {
             vidaActual = datosEnemigos.vida;
@@ -67,8 +70,22 @@ public class MovimientoEnemigo : MonoBehaviour
             spriteRenderer.sprite = datosEnemigos.spriteEnemigo;
         }
 
-        // Línea opcional para verificar en la consola que todo funcione:
         Debug.Log($"Enemigo creado: {datosEnemigos.nombre} con la carta {miValor} de {miPalo}");
+    }
+
+    // --- NUEVO MÉTODO COMPATIBLE CON EL ATAQUE DEL JUGADOR ---
+    // Esta función conecta directamente con el "enemigo.GetComponent<MovimientoEnemigo>()" del jugador
+    public void RecibirDañoYEmpuje(int cantidadDaño, Vector3 direccionEmpuje, float fuerza)
+    {
+        // 1. Aplicamos el empuje físico si el enemigo tiene Rigidbody
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector3.zero; // Limpiamos inercias anteriores
+            rb.AddForce(direccionEmpuje * fuerza, ForceMode.Impulse); // Empujón seco hacia atrás
+        }
+
+        // 2. Reutilizamos tu función existente para quitarle vida y procesar las cartas
+        quitarVida(cantidadDaño);
     }
 
     public void quitarVida(int cantidad)
@@ -78,16 +95,16 @@ public class MovimientoEnemigo : MonoBehaviour
         {
             evaluador.RecogerCarta(miPalo, miValor);
         }
+
         vidaActual -= cantidad;
 
         if (vidaActual <= 0)
         {
             if (canvasDirector != null)
             {
-               
                 canvasDirector.MostrarCartaEliminada(miPalo, miValor);
             }
-         
+
             Destroy(gameObject);
         }
     }

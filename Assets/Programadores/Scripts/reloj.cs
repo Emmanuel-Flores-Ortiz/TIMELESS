@@ -1,9 +1,12 @@
-using UnityEngine; 
+using UnityEngine;
+
 public class Reloj : MonoBehaviour
 {
     [Header("Transformaciones del Reloj 3D")]
     public Transform pivothoras;
     public Transform pivotminutos;
+    public Transform pivotmesh; // <--- Tu pivot mesh actual
+    public RectTransform minuteroUI;
 
     [Header("Configuración del Jefe")]
     public GameObject jefe;
@@ -12,7 +15,7 @@ public class Reloj : MonoBehaviour
     [Header("Configuración de Adelanto")]
     public float velocidadAdelanto = 3600f;
 
-    private const float tiempo = 120f;
+    private const float tiempo = 360f;
     private const float limiteHoras = 24f;
     private float hora = 0f;
     private bool spawnboss = false;
@@ -23,18 +26,16 @@ public class Reloj : MonoBehaviour
 
     private Vector3 escalaOriginal;
 
-    public bool Juego= true;
+    public bool Juego = true;
     public int HoraTexto;
     public int MinutoTexto;
 
     void Start()
     {
-        
         if (minutero != null)
         {
             escalaOriginal = minutero.transform.localScale;
         }
-        // hora = 86000f;
     }
 
     void Update()
@@ -55,17 +56,15 @@ public class Reloj : MonoBehaviour
                 hora += pasoAdelanto;
                 Adelantamiento -= pasoAdelanto;
 
-              
                 if (minutero != null)
                 {
                     Vector3 escalaModificada = escalaOriginal;
-                    escalaModificada.x += 0.18f; 
+                    escalaModificada.x += 0.18f;
                     minutero.transform.localScale = escalaModificada;
                 }
             }
             else
             {
-                
                 if (minutero != null)
                 {
                     minutero.transform.localScale = escalaOriginal;
@@ -85,6 +84,19 @@ public class Reloj : MonoBehaviour
 
         pivothoras.localRotation = Quaternion.Euler(0, manecillaH, 0);
         pivotminutos.localRotation = Quaternion.Euler(0, manecillaM, 0);
+
+        // --- NUEVA LÓGICA DUPLICADA PARA PIVOT MESH ---
+        if (pivotmesh != null)
+        {
+            pivotmesh.localRotation = Quaternion.Euler(0, manecillaM, 0);
+        }
+        // ----------------------------------------------
+
+        // Rotación 2D para el UI
+        if (minuteroUI != null)
+        {
+            minuteroUI.localRotation = Quaternion.Euler(0, 0, -manecillaM);
+        }
 
         // Cálculo del tiempo restante
         float horasRestantes = limiteHoras - horas;
@@ -126,5 +138,13 @@ public class Reloj : MonoBehaviour
         float minutos = hora / 60f;
         float horas = minutos / 60f;
         return Mathf.FloorToInt(horas);
+    }
+
+    public void ModificarTiempoDesdeUI(float segundosAñadir)
+    {
+        if (Juego)
+        {
+            hora += segundosAñadir;
+        }
     }
 }
