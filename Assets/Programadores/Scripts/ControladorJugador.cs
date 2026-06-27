@@ -55,7 +55,7 @@ public class ControladorJugador : MonoBehaviour
 
         actions.Player.Jump.performed += Jumping;
 
-        actions.Player.Attack.performed += Attacking;
+        actions.Player.AltAttack.performed += Attacking;
     }
 
     void OnDisable()
@@ -67,7 +67,7 @@ public class ControladorJugador : MonoBehaviour
 
         actions.Player.Jump.performed -= Jumping;
 
-        actions.Player.Attack.performed -= Attacking;
+        actions.Player.AltAttack.performed -= Attacking;
     }
 
     // DETECCION DE LA TECLA DE INPUT PRESIONADA
