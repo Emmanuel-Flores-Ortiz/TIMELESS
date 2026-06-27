@@ -44,6 +44,8 @@ public class ControladorJugador : MonoBehaviour
         actions.Player.Move.canceled += Movement;
 
         actions.Player.Jump.performed += Jumping;
+
+        actions.Player.Attack.performed += Attacking;
     }
 
     void OnDisable()
@@ -54,6 +56,8 @@ public class ControladorJugador : MonoBehaviour
         actions.Player.Move.canceled -= Movement;
 
         actions.Player.Jump.performed -= Jumping;
+
+        actions.Player.Attack.performed -= Attacking;
     }
 
     //DETECCION DE LA TECLA DE INPUT PRESIONADA
@@ -70,6 +74,19 @@ public class ControladorJugador : MonoBehaviour
             enElSuelo = false;
             //animator.SetTrigger("Jump");
         }
+    }
+
+    void Attacking(InputAction.CallbackContext ctx)
+    {
+        //animator.SetBool("isAttack", true);
+        rb.linearVelocity = new Vector3(0, 0, 0);
+        Debug.Log("Ataque realizado");
+    }
+
+    //Funcion para que el ataque no se quede bloqueado en un bucle
+    public void EndAttack()
+    {
+        //animator.SetBool("isAttack", false);
     }
 
     void Start()
