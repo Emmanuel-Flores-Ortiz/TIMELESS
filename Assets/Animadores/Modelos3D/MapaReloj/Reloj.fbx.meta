@@ -1,0 +1,305 @@
+fileFormatVersion: 2
+guid: fb650a44ff221c8499e5040b750448fc
+ModelImporter:
+  serializedVersion: 24200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gear
+    second: {fileID: 2100000, guid: a3940748dd26a594daef2191c75100fb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gear_2
+    second: {fileID: 2100000, guid: 917c590da4f952d439fbd39f0da91de3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gear_3
+    second: {fileID: 2100000, guid: 59d1b4db46fd374428f54945b2d9d46b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gear_4
+    second: {fileID: 2100000, guid: 7bbdf7cb573b6ec40a1c4c9e71df5f10, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gear_5
+    second: {fileID: 2100000, guid: 3627519957d428d44b3b3684c7b53030, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gear_6
+    second: {fileID: 2100000, guid: 4c0383b14e94b8d43bad7f8040a2fd12, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Manecillas.001
+    second: {fileID: 2100000, guid: 5c8b901a113f4bc409537daf15d4cb1e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Reloj
+    second: {fileID: 2100000, guid: f82c73558f3f65f48ae7ce96a6bb5451, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Gear_2_BaseColor
+    second: {fileID: 2800000, guid: 6c899e8aa7e47e645864ff0e3ddf1ccb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Gear_2_Metallic
+    second: {fileID: 2800000, guid: 56e8e0d505c654141824c99cc49c0a9e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Gear_2_Normal
+    second: {fileID: 2800000, guid: fd5dbf18fbad90343a701cfafb9e9f1c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Gear_2_Roughness
+    second: {fileID: 2800000, guid: 6155bdc34f7bac54e87cbec1e9a59b07, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Gear_3_BaseColor
+    second: {fileID: 2800000, guid: 06868eb840e8247419b12662ed2a88eb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Gear_3_Metallic
+    second: {fileID: 2800000, guid: a9d63c9e37cb5d54cbd55a954dc3ff9d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Gear_3_Normal
+    second: {fileID: 2800000, guid: 7fc1c80b3d2f20f49a9053870424c166, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Gear_3_Roughness
+    second: {fileID: 2800000, guid: cdd01b28c45eab142bf57f096e8ea2db, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Gear_4_BaseColor
+    second: {fileID: 2800000, guid: 0154bba94d31af04294b4bf99396b439, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Gear_4_Metallic
+    second: {fileID: 2800000, guid: ac5c48e87386d064a8e0308615564da5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Gear_4_Normal
+    second: {fileID: 2800000, guid: aa9af1733b90310478ab50dde9badd27, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Gear_4_Roughness
+    second: {fileID: 2800000, guid: 7ef0e7d69cfb3784dad08ea8b9d5b001, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Gear_5_BaseColor
+    second: {fileID: 2800000, guid: ecec6dd060f820145b3c1b5ec4859efc, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Gear_5_Metallic
+    second: {fileID: 2800000, guid: 8a8a39051b35ce9419994cafe5f16664, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Gear_5_Normal
+    second: {fileID: 2800000, guid: de68fdb33d25bd444b0f4641e289ea66, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Gear_5_Roughness
+    second: {fileID: 2800000, guid: 5f665c51019486c4ca94e30e759407b8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Gear_6_BaseColor
+    second: {fileID: 2800000, guid: 6859ec4e459b3174f8e83aba38463118, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Gear_6_Metallic
+    second: {fileID: 2800000, guid: 6f6af73c74ba6d141aa7232d44eb31fd, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Gear_6_Normal
+    second: {fileID: 2800000, guid: 81066472fe6f78849ba644d2a4f2564a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Gear_6_Roughness
+    second: {fileID: 2800000, guid: b912559cabb8b594fb62ae7793823f1b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Gear_BaseColor
+    second: {fileID: 2800000, guid: 1a782284bfc8fc84bbe91ff9e19dcb9b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Gear_Metallic
+    second: {fileID: 2800000, guid: 21b8daf90b1540b438902238b9dada73, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Gear_Normal
+    second: {fileID: 2800000, guid: 0c74e2594f918924eab98ad86040e3b9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Gear_Roughness
+    second: {fileID: 2800000, guid: 5dec985520feee14a948b2c40d685c7e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Reloj_night_BaseColor
+    second: {fileID: 2800000, guid: 1dacd944d9b5ce349829b14ca5bb3c96, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Reloj_night_Metallic
+    second: {fileID: 2800000, guid: f50bc40ceb9062346b6fc88d17d49fff, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Reloj_night_Normal
+    second: {fileID: 2800000, guid: f40be3e463d9f364f9e0fecd96e79b8e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Reloj_LP_Reloj_night_Roughness
+    second: {fileID: 2800000, guid: 343f7098fed537d4fa9e701cca4d61e0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: manecillas_Manecillas_1_BaseColor
+    second: {fileID: 2800000, guid: 2b7cd77fa5996c84b9b2ce02cd612653, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: manecillas_Manecillas_1_Metallic
+    second: {fileID: 2800000, guid: 6ea482815eeade340a8e05717c1525aa, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: manecillas_Manecillas_1_Roughness
+    second: {fileID: 2800000, guid: 98aee4f6863328b4dbf8658765372afa, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    generateMeshLods: 0
+    meshLodGenerationFlags: 0
+    maximumMeshLod: -1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
